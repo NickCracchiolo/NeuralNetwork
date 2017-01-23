@@ -20,8 +20,10 @@ class MultilayeredNeuralNet {
 	 */
 	init(with layers:[Int]) {
 		self.layers = layers
-		for _ in 0..<layers.count {
-			weights.append(Matrix.random(withRows: 10, cols: 10))
+		//creates random weights for each layer (besides output) based on the 
+		//number of neurons in each layer
+		for i in 0..<(layers.count - 1) {
+			weights.append(Matrix.random(withRows: layers[i], cols: layers[i+1]))
 			//weights.append(Double(arc4random_uniform(2)) - 1)
 		}
 	}
